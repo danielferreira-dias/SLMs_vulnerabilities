@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(literature-review)",
+      "WebSearch",
+      "WebFetch(domain:arxiv.org)",
+      "Skill(scientific-writing)"
+    ]
+  }
+}

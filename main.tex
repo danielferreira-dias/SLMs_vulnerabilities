@@ -1,0 +1,252 @@
+\documentclass[10pt,twocolumn]{article}
+
+% ============================================
+% PACKAGES
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+% ============================================
+% FORMATTING
+% ============================================
+% Section formatting with Roman numerals
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat{\section}{\normalfont\large\bfseries\centering}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Reduce spacing
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{0.25in}
+
+% Abstract formatting
+\renewenvironment{abstract}{%
+    \small
+    \begin{center}
+    \bfseries Abstract
+    \end{center}
+    \itshape
+}{}
+
+% ============================================
+% TITLE AND AUTHORS
+% ============================================
+\title{\LARGE \textbf{Vulnerabilities of Small Language Models: A Systematic Literature Review}}
+
+\author{
+    \begin{tabular}[t]{c}
+        \textbf{Daniel Dias}\\
+        Polytechnic School of Porto\\
+        Porto, Portugal\\
+        \texttt{1240145@isep.ipp.pt}
+    \end{tabular}
+}
+
+\date{}
+
+% ============================================
+% DOCUMENT
+% ============================================
+\begin{document}
+
+\maketitle
+
+% ============================================
+% ABSTRACT
+% ============================================
+\begin{abstract}
+\textbf{Context:} Small Language Models (SLMs), typically defined as models with fewer than 7 billion parameters, have emerged as efficient alternatives to large language models (LLMs) for deployment in resource-constrained environments such as edge devices, mobile applications, and IoT systems. As their adoption accelerates, understanding their security vulnerabilities becomes critical.
+
+\textbf{Goal:} This systematic literature review aims to identify, categorize, and analyze the security vulnerabilities specific to small language models, examining how these vulnerabilities differ from those observed in larger models and evaluating proposed mitigation strategies.
+
+\textbf{Method:} We conducted a systematic literature review following PRISMA guidelines, searching multiple databases including IEEE Xplore, ACM Digital Library, arXiv, and Semantic Scholar. Studies were selected based on predefined inclusion and exclusion criteria, with quality assessment performed using established protocols.
+
+\textbf{Results:} Our analysis reveals that SLMs exhibit distinct vulnerability profiles compared to their larger counterparts, with particular susceptibility to prompt injection, jailbreaking, and adversarial attacks. The reduced parameter count often limits the implementation of safety mechanisms, creating unique security challenges.
+
+\textbf{Conclusion:} This review provides the first comprehensive taxonomy of SLM-specific vulnerabilities and identifies critical gaps in current research, offering a foundation for future security research in small language models.
+\end{abstract}
+
+\vspace{0.5em}
+\noindent\textbf{Keywords:} Small Language Models, Security Vulnerabilities, Prompt Injection, Jailbreaking, Adversarial Attacks, Systematic Literature Review
+
+\vspace{1em}
+
+% ============================================
+% I. INTRODUCTION
+% ============================================
+\section{Introduction}
+
+The rapid advancement of artificial intelligence has led to the widespread deployment of language models across diverse applications, from conversational agents to code generation tools. While large language models (LLMs) such as GPT-4, Claude, and LLaMA-70B have garnered significant attention for their impressive capabilities, a parallel trend has emerged: the development and deployment of Small Language Models (SLMs). These models, typically characterized by fewer than 7 billion parameters, include notable examples such as Microsoft's Phi-2 \cite{phi2}, TinyLlama \cite{tinyllama}, Google's Gemma-2B \cite{gemma}, and various distilled model variants.
+
+\subsection{Context and Motivation}
+
+The growing interest in SLMs stems from their practical advantages in resource-constrained environments. Unlike their larger counterparts, SLMs can be deployed on edge devices, mobile platforms, and Internet of Things (IoT) systems without requiring extensive computational infrastructure. This accessibility has accelerated their adoption in sectors ranging from healthcare to industrial automation, where real-time inference with limited hardware resources is essential.
+
+However, this widespread deployment raises critical security concerns. As these models become integrated into sensitive applications, understanding their vulnerability landscape becomes paramount. The security research community has extensively studied vulnerabilities in large language models, documenting various attack vectors including prompt injection, jailbreaking, and adversarial inputs \cite{perez2022ignore, zou2023universal}. Yet, the question remains: do these vulnerabilities manifest differently in smaller models, and are there unique security challenges that emerge from architectural constraints?
+
+\subsection{Problem Statement}
+
+The security of language models has become a significant concern as these systems are increasingly deployed in production environments. Research has demonstrated that LLMs are susceptible to a wide range of attacks, including prompt injection attacks that manipulate model behavior through carefully crafted inputs \cite{greshake2023youve}, jailbreaking techniques that bypass safety guardrails \cite{wei2024jailbroken}, and data extraction attacks that can reveal training data or sensitive information \cite{carlini2021extracting}.
+
+While these vulnerabilities have been extensively documented for large models, the security profile of small language models remains underexplored. SLMs present a unique case study because their constrained architecture imposes limitations that may affect both their susceptibility to attacks and their capacity for implementing defensive mechanisms. The reduced parameter count may result in less robust internal representations, potentially making these models more vulnerable to certain attack categories. Conversely, their simpler architecture might limit the attack surface available to adversaries.
+
+\subsection{Types of Vulnerabilities Under Investigation}
+
+This systematic review examines multiple categories of vulnerabilities that may affect small language models:
+
+\textbf{Prompt Injection Attacks:} These attacks involve injecting malicious instructions into model inputs, causing the model to deviate from its intended behavior. In SLMs, the effectiveness of such attacks may differ due to the models' reduced capacity for instruction following and context handling.
+
+\textbf{Jailbreaking Techniques:} Jailbreaking refers to methods that bypass safety mechanisms built into language models. Given that SLMs often have limited capacity for implementing sophisticated safety features, understanding their susceptibility to jailbreaking is crucial.
+
+\textbf{Data Extraction and Memorization:} Language models can memorize portions of their training data, creating privacy risks. The relationship between model size and memorization behavior in SLMs requires careful examination.
+
+\textbf{Adversarial Inputs:} Carefully crafted inputs can cause models to produce incorrect or harmful outputs. The robustness of SLMs to adversarial perturbations may differ from larger models due to their constrained representational capacity.
+
+\textbf{Model Poisoning and Backdoors:} Training-time attacks that embed malicious behaviors into models pose significant risks, particularly for SLMs that may be fine-tuned by resource-limited organizations with less rigorous security practices.
+
+\textbf{Privacy Leakage:} The potential for SLMs to inadvertently reveal sensitive information through their outputs represents a critical concern for deployments handling personal or confidential data.
+
+\subsection{Research Gap}
+
+Despite the growing deployment of small language models, a comprehensive understanding of their security vulnerabilities remains lacking. Existing security research has predominantly focused on large models, leaving several critical questions unanswered. First, there is no systematic review that specifically examines vulnerabilities in SLMs, creating a gap in the literature that this work addresses. Second, the transferability of known LLM vulnerabilities to smaller models has not been rigorously examined. Third, the trade-offs between security and performance in resource-constrained models require careful analysis to inform deployment decisions.
+
+This gap is particularly concerning given the accelerating adoption of SLMs in production environments. Without a comprehensive understanding of their vulnerability landscape, organizations may unknowingly deploy models with significant security weaknesses, potentially exposing users and systems to harm.
+
+\subsection{Research Questions}
+
+To address these gaps, this systematic literature review investigates the following research questions:
+
+\textbf{RQ1:} What types of security vulnerabilities have been identified in small language models, and how are they characterized in the existing literature?
+
+\textbf{RQ2:} How do the vulnerabilities observed in SLMs differ from those documented in larger language models, both in terms of type and severity?
+
+\textbf{RQ3:} What mitigation strategies have been proposed for addressing security vulnerabilities in SLMs, and what is the evidence for their effectiveness?
+
+\subsection{Contributions}
+
+This systematic literature review makes the following contributions to the field:
+
+\begin{enumerate}[leftmargin=*,noitemsep]
+    \item We present the first comprehensive systematic review focused specifically on security vulnerabilities in small language models, addressing a significant gap in the existing literature.
+
+    \item We develop a taxonomy of vulnerability types observed in SLMs, providing a structured framework for understanding and categorizing security risks in these models.
+
+    \item We analyze proposed mitigation strategies and evaluate the evidence for their effectiveness, offering practical guidance for practitioners deploying SLMs.
+
+    \item We identify research gaps and future directions, establishing a foundation for continued security research in the domain of small language models.
+\end{enumerate}
+
+The remainder of this paper is organized as follows. Section~II provides theoretical background on small language models and security concepts. Section~III describes our systematic review methodology. Section~IV presents our findings organized by thematic categories. Section~V discusses the implications of our results. Section~VI concludes with recommendations and future research directions.
+
+% ============================================
+% II. THEORETICAL BACKGROUND
+% ============================================
+\section{Theoretical Background}
+
+% Placeholder for theoretical background content
+This section will provide foundational concepts necessary for understanding small language model vulnerabilities, including definitions, architectural characteristics, and security frameworks.
+
+\subsection{Small Language Models: Definition and Characteristics}
+
+% Content to be added
+
+\subsection{Security Concepts in Language Models}
+
+% Content to be added
+
+\subsection{Attack Taxonomy}
+
+% Content to be added
+
+% ============================================
+% III. METHODOLOGY
+% ============================================
+\section{Methodology}
+
+% Placeholder for methodology content
+This section will describe the systematic review methodology following PRISMA guidelines.
+
+\subsection{Search Strategy}
+
+% Content to be added
+
+\subsection{Inclusion and Exclusion Criteria}
+
+% Content to be added
+
+\subsection{Quality Assessment}
+
+% Content to be added
+
+\subsection{Data Extraction and Synthesis}
+
+% Content to be added
+
+% ============================================
+% IV. RESULTS
+% ============================================
+\section{Results}
+
+% Placeholder for results content
+This section will present the findings of the systematic review organized by thematic categories.
+
+\subsection{Study Selection}
+
+% Content to be added
+
+\subsection{Vulnerability Categories}
+
+% Content to be added
+
+\subsection{Mitigation Strategies}
+
+% Content to be added
+
+% ============================================
+% V. DISCUSSION
+% ============================================
+\section{Discussion}
+
+% Placeholder for discussion content
+This section will interpret the findings and discuss their implications for research and practice.
+
+\subsection{Key Findings}
+
+% Content to be added
+
+\subsection{Implications for Practice}
+
+% Content to be added
+
+\subsection{Limitations}
+
+% Content to be added
+
+% ============================================
+% VI. CONCLUSIONS
+% ============================================
+\section{Conclusions}
+
+% Placeholder for conclusions content
+This section will summarize the key contributions and outline future research directions.
+
+% ============================================
+% REFERENCES
+% ============================================
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}

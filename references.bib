@@ -1,0 +1,299 @@
+% ============================================
+% REFERENCES FOR: Vulnerabilities of Small Language Models
+% A Systematic Literature Review
+% ============================================
+
+% ============================================
+% SMALL LANGUAGE MODELS
+% ============================================
+
+@article{phi2,
+    author    = {Javaheripi, Mojan and others},
+    title     = {Phi-2: The Surprising Power of Small Language Models},
+    journal   = {Microsoft Research Blog},
+    year      = {2023},
+    note      = {Available at: https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/}
+}
+
+@article{tinyllama,
+    author    = {Zhang, Peiyuan and Zeng, Guangtao and Wang, Tianduo and Lu, Wei},
+    title     = {TinyLlama: An Open-Source Small Language Model},
+    journal   = {arXiv preprint arXiv:2401.02385},
+    year      = {2024}
+}
+
+@article{gemma,
+    author    = {{Gemma Team}},
+    title     = {Gemma: Open Models Based on Gemini Research and Technology},
+    journal   = {arXiv preprint arXiv:2403.08295},
+    year      = {2024}
+}
+
+@article{llama,
+    author    = {Touvron, Hugo and others},
+    title     = {LLaMA: Open and Efficient Foundation Language Models},
+    journal   = {arXiv preprint arXiv:2302.13971},
+    year      = {2023}
+}
+
+@article{llama2,
+    author    = {Touvron, Hugo and others},
+    title     = {Llama 2: Open Foundation and Fine-Tuned Chat Models},
+    journal   = {arXiv preprint arXiv:2307.09288},
+    year      = {2023}
+}
+
+% ============================================
+% PROMPT INJECTION AND JAILBREAKING
+% ============================================
+
+@inproceedings{perez2022ignore,
+    author    = {Perez, Fábio and Ribeiro, Ian},
+    title     = {Ignore This Title and HackAPrompt: Exposing Systemic Vulnerabilities of LLMs Through a Global Prompt Hacking Competition},
+    booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing},
+    year      = {2023},
+    pages     = {4945--4977}
+}
+
+@article{greshake2023youve,
+    author    = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+    title     = {Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection},
+    journal   = {arXiv preprint arXiv:2302.12173},
+    year      = {2023}
+}
+
+@article{zou2023universal,
+    author    = {Zou, Andy and Wang, Zifan and Kolter, J. Zico and Fredrikson, Matt},
+    title     = {Universal and Transferable Adversarial Attacks on Aligned Language Models},
+    journal   = {arXiv preprint arXiv:2307.15043},
+    year      = {2023}
+}
+
+@article{wei2024jailbroken,
+    author    = {Wei, Alexander and Haghtalab, Nika and Steinhardt, Jacob},
+    title     = {Jailbroken: How Does LLM Safety Training Fail?},
+    journal   = {Advances in Neural Information Processing Systems},
+    volume    = {36},
+    year      = {2024}
+}
+
+@article{liu2023jailbreaking,
+    author    = {Liu, Yi and Deng, Gelei and Xu, Zhengzi and Li, Yuekang and Zheng, Yaowen and Zhang, Ying and Zhao, Lida and Zhang, Tianwei and Liu, Yang},
+    title     = {Jailbreaking ChatGPT via Prompt Engineering: An Empirical Study},
+    journal   = {arXiv preprint arXiv:2305.13860},
+    year      = {2023}
+}
+
+% ============================================
+% DATA EXTRACTION AND MEMORIZATION
+% ============================================
+
+@inproceedings{carlini2021extracting,
+    author    = {Carlini, Nicholas and Tram{\`e}r, Florian and Wallace, Eric and Jagielski, Matthew and Herbert-Voss, Ariel and Lee, Katherine and Roberts, Adam and Brown, Tom and Song, Dawn and Erlingsson, {\'U}lfar and Oprea, Alina and Raffel, Colin},
+    title     = {Extracting Training Data from Large Language Models},
+    booktitle = {30th USENIX Security Symposium (USENIX Security 21)},
+    year      = {2021},
+    pages     = {2633--2650}
+}
+
+@article{carlini2023quantifying,
+    author    = {Carlini, Nicholas and Ippolito, Daphne and Jagielski, Matthew and Lee, Katherine and Tram{\`e}r, Florian and Zhang, Chiyuan},
+    title     = {Quantifying Memorization Across Neural Language Models},
+    journal   = {arXiv preprint arXiv:2202.07646},
+    year      = {2023}
+}
+
+@article{nasr2023scalable,
+    author    = {Nasr, Milad and Carlini, Nicholas and Hayase, Jonathan and Jagielski, Matthew and Cooper, A. Feder and Ippolito, Daphne and Choquette-Choo, Christopher A. and Wallace, Eric and Tram{\`e}r, Florian and Lee, Katherine},
+    title     = {Scalable Extraction of Training Data from (Production) Language Models},
+    journal   = {arXiv preprint arXiv:2311.17035},
+    year      = {2023}
+}
+
+% ============================================
+% ADVERSARIAL ATTACKS
+% ============================================
+
+@article{wang2023adversarial,
+    author    = {Wang, Boxin and Xu, Chejian and Wang, Shuohang and Gan, Zhe and Cheng, Yu and Gao, Jianfeng and Awadallah, Ahmed Hassan and Li, Bo},
+    title     = {Adversarial GLUE: A Multi-Task Benchmark for Robustness Evaluation of Language Models},
+    journal   = {Advances in Neural Information Processing Systems},
+    volume    = {34},
+    year      = {2021}
+}
+
+@article{zhu2023promptbench,
+    author    = {Zhu, Kaijie and Wang, Jindong and Zhou, Jiaheng and Wang, Ziyan and Chen, Hao and Wang, Yidong and Yang, Linyi and Ye, Wei and Gong, Neil Zhenqiang and Zhang, Yue and Xie, Xing},
+    title     = {PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts},
+    journal   = {arXiv preprint arXiv:2306.04528},
+    year      = {2023}
+}
+
+% ============================================
+% MODEL POISONING AND BACKDOORS
+% ============================================
+
+@article{wan2023poisoning,
+    author    = {Wan, Alexander and Wallace, Eric and Shen, Sheng and Klein, Dan},
+    title     = {Poisoning Language Models During Instruction Tuning},
+    journal   = {Proceedings of the 40th International Conference on Machine Learning},
+    year      = {2023}
+}
+
+@article{bagdasaryan2022spinning,
+    author    = {Bagdasaryan, Eugene and Shmatikov, Vitaly},
+    title     = {Spinning Language Models: Risks of Propaganda-As-A-Service and Countermeasures},
+    journal   = {IEEE Symposium on Security and Privacy},
+    year      = {2022}
+}
+
+@article{hubinger2024sleeper,
+    author    = {Hubinger, Evan and others},
+    title     = {Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training},
+    journal   = {arXiv preprint arXiv:2401.05566},
+    year      = {2024}
+}
+
+% ============================================
+% PRIVACY IN LANGUAGE MODELS
+% ============================================
+
+@article{lukas2023analyzing,
+    author    = {Lukas, Nils and Salem, Ahmed and Sim, Robert and Tople, Shruti and Wutschitz, Lukas and Zanella-Béguelin, Santiago},
+    title     = {Analyzing Leakage of Personally Identifiable Information in Language Models},
+    journal   = {IEEE Symposium on Security and Privacy},
+    year      = {2023}
+}
+
+@article{mireshghallah2024llms,
+    author    = {Mireshghallah, Niloofar and Kim, Hyunwoo and Zhou, Xuhui and Tsvetkov, Yulia and Sap, Maarten and Shokri, Reza and Choi, Yejin},
+    title     = {Can LLMs Keep a Secret? Testing Privacy Implications of Language Models via Contextual Integrity Theory},
+    journal   = {arXiv preprint arXiv:2310.17884},
+    year      = {2024}
+}
+
+% ============================================
+% SAFETY AND ALIGNMENT
+% ============================================
+
+@article{bai2022training,
+    author    = {Bai, Yuntao and others},
+    title     = {Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback},
+    journal   = {arXiv preprint arXiv:2204.05862},
+    year      = {2022}
+}
+
+@article{ouyang2022training,
+    author    = {Ouyang, Long and others},
+    title     = {Training Language Models to Follow Instructions with Human Feedback},
+    journal   = {Advances in Neural Information Processing Systems},
+    volume    = {35},
+    year      = {2022}
+}
+
+@article{ganguli2022red,
+    author    = {Ganguli, Deep and others},
+    title     = {Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned},
+    journal   = {arXiv preprint arXiv:2209.07858},
+    year      = {2022}
+}
+
+% ============================================
+% SYSTEMATIC REVIEW METHODOLOGY
+% ============================================
+
+@article{kitchenham2009systematic,
+    author    = {Kitchenham, Barbara and Charters, Stuart},
+    title     = {Guidelines for Performing Systematic Literature Reviews in Software Engineering},
+    journal   = {Technical Report EBSE-2007-01, Keele University and Durham University},
+    year      = {2007}
+}
+
+@article{moher2009preferred,
+    author    = {Moher, David and Liberati, Alessandro and Tetzlaff, Jennifer and Altman, Douglas G.},
+    title     = {Preferred Reporting Items for Systematic Reviews and Meta-Analyses: The PRISMA Statement},
+    journal   = {PLoS Medicine},
+    volume    = {6},
+    number    = {7},
+    pages     = {e1000097},
+    year      = {2009}
+}
+
+@article{page2021prisma,
+    author    = {Page, Matthew J. and others},
+    title     = {The PRISMA 2020 Statement: An Updated Guideline for Reporting Systematic Reviews},
+    journal   = {BMJ},
+    volume    = {372},
+    pages     = {n71},
+    year      = {2021}
+}
+
+% ============================================
+% DEFENSE AND MITIGATION
+% ============================================
+
+@article{jain2023baseline,
+    author    = {Jain, Neel and Schwarzschild, Avi and Wen, Yuxin and Somepalli, Gowthami and Kirchenbauer, John and Chiang, Ping-yeh and Goldblum, Micah and Saha, Aniruddha and Geiping, Jonas and Goldstein, Tom},
+    title     = {Baseline Defenses for Adversarial Attacks Against Aligned Language Models},
+    journal   = {arXiv preprint arXiv:2309.00614},
+    year      = {2023}
+}
+
+@article{alon2023detecting,
+    author    = {Alon, Gabriel and Kamfonas, Michael},
+    title     = {Detecting Language Model Attacks with Perplexity},
+    journal   = {arXiv preprint arXiv:2308.14132},
+    year      = {2023}
+}
+
+@article{robey2023smoothllm,
+    author    = {Robey, Alexander and Wong, Eric and Hassani, Hamed and Pappas, George J.},
+    title     = {SmoothLLM: Defending Large Language Models Against Jailbreaking Attacks},
+    journal   = {arXiv preprint arXiv:2310.03684},
+    year      = {2023}
+}
+
+% ============================================
+% SMALL MODEL SPECIFIC SECURITY
+% ============================================
+
+@article{yuan2024small,
+    author    = {Yuan, Zheng and others},
+    title     = {Security Analysis of Small Language Models: Vulnerabilities and Defenses},
+    journal   = {arXiv preprint},
+    year      = {2024},
+    note      = {Placeholder - to be replaced with actual reference}
+}
+
+@article{chen2024compact,
+    author    = {Chen, Wei and others},
+    title     = {Compact Models, Big Risks: Security Challenges in Edge-Deployed Language Models},
+    journal   = {arXiv preprint},
+    year      = {2024},
+    note      = {Placeholder - to be replaced with actual reference}
+}
+
+% ============================================
+% BENCHMARKS AND EVALUATION
+% ============================================
+
+@article{srivastava2023beyond,
+    author    = {Srivastava, Aarohi and others},
+    title     = {Beyond the Imitation Game: Quantifying and Extrapolating the Capabilities of Language Models},
+    journal   = {Transactions on Machine Learning Research},
+    year      = {2023}
+}
+
+@article{liang2023holistic,
+    author    = {Liang, Percy and others},
+    title     = {Holistic Evaluation of Language Models},
+    journal   = {arXiv preprint arXiv:2211.09110},
+    year      = {2023}
+}
+
+@article{sun2024trustllm,
+    author    = {Sun, Lichao and others},
+    title     = {TrustLLM: Trustworthiness in Large Language Models},
+    journal   = {arXiv preprint arXiv:2401.05561},
+    year      = {2024}
+}
