@@ -292,3 +292,195 @@ Based on initial screening, papers cover these vulnerability types:
 - Review protocol registered at: N/A
 - Initial search identified 68 unique papers for screening
 - Key finding: 47.6% of SLMs show high susceptibility to jailbreak attacks (ASR > 40%) per arXiv:2503.06519
+
+---
+
+## TITLE/ABSTRACT SCREENING RESULTS (2025-01-17)
+
+### Screening Summary
+
+| Metric | Count |
+|--------|-------|
+| Total papers screened | 68 |
+| **INCLUDED** | 64 |
+| **EXCLUDED** | 4 |
+
+---
+
+### Screening Decisions by Category
+
+#### Category A: SLM-Specific Vulnerability Papers (1-10)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 1 | Can Small Language Models Reliably Resist Jailbreak Attacks? | **INCLUDE** | Directly evaluates 63 SLMs against jailbreak attacks; core paper |
+| 2 | Beyond the Tip of Efficiency: Uncovering Submerged Threats of Jailbreak Attacks in SLMs | **INCLUDE** | Compares 13 SLMs (<4B) vs 3 LLMs on security |
+| 3 | Efficient and Stealthy Jailbreak Attacks via Adversarial Prompt Distillation from LLMs to SLMs | **INCLUDE** | Uses BERT, ALBERT, RoBERTa as student SLMs |
+| 4 | Spirit: Patching Speech Language Models against Jailbreak Attacks | **INCLUDE** | Studies Qwen2-Audio-7B, LLaMa-Omni vulnerabilities |
+| 5 | Toward Cybersecurity-Expert Small Language Models | **INCLUDE** | Uses Qwen3-4B, 8B, 14B for security tasks |
+| 6 | Small Language Models: Survey, Measurements, and Insights | **INCLUDE** | Foundational SLM survey (100M-5B parameters) |
+| 7 | Small Language Models are the Future of Agentic AI (NVIDIA) | **INCLUDE** | Defines SLMs <10B; discusses deployment considerations |
+| 8 | Win-k: Improved Membership Inference Attacks on Small Language Models | **INCLUDE** | Directly about privacy attacks on SLMs |
+| 9 | AttentionDefense: Leveraging System Prompt Attention for Defense | **INCLUDE** | Proposes SLM-based defense mechanism |
+| 10 | On Jailbreaking Quantized Language Models Through Fault Injection | **INCLUDE** | Studies quantized models (typical for edge SLMs) |
+
+**Category A Result: 10 INCLUDED, 0 EXCLUDED**
+
+---
+
+#### Category B: Jailbreak & Prompt Injection Papers (11-25)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 11 | Bypassing Prompt Injection and Jailbreak Detection in LLM Guardrails | **INCLUDE** | Attack techniques applicable to SLM guardrails |
+| 12 | Red Teaming the Mind of the Machine | **INCLUDE** | Tests Mistral 7B, Vicuna (SLMs) |
+| 13 | The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses | **INCLUDE** | Evaluates defenses including StruQ, MetaSecAlign |
+| 14 | Jailbreaking and Mitigation of Vulnerabilities in LLMs | **INCLUDE** | General methodology applicable to SLMs |
+| 15 | PromptScreen: Efficient Jailbreak Mitigation | **INCLUDE** | Lightweight defense suitable for SLMs |
+| 16 | Defending LLMs Against Jailbreak via In-Decoding Safety-Awareness | **INCLUDE** | Defense mechanism applicable across model sizes |
+| 17 | Multimodal Prompt Injection Attacks | **INCLUDE** | Applicable to multimodal SLMs |
+| 18 | A Comprehensive Study of Jailbreak Attack versus Defense | **INCLUDE** | Tests Vicuna, Llama (7B variants) |
+| 19 | Bag of Tricks: Benchmarking of Jailbreak Attacks | **INCLUDE** | Tests Llama2-7B, Llama3-8B, Vicuna-13B |
+| 20 | Jailbreak Attacks and Defenses Against LLMs: A Survey | **INCLUDE** | Comprehensive survey covering all model sizes |
+| 21 | Jailbreaking Safety-Aligned LLMs with Simple Adaptive Attacks | **INCLUDE** | Tests Llama-2-7B/13B, Gemma-7B |
+| 22 | SmoothLLM: Defending LLMs Against Jailbreaking Attacks | **INCLUDE** | Defense applicable to SLMs |
+| 23 | Robust Prompt Optimization for Defending Language Models | **INCLUDE** | Tests on Llama-2; 0% ASR achieved |
+| 24 | Evolving Security in LLMs: Study of Jailbreak Attacks and Defenses | **INCLUDE** | Analyzes Llama 2/3 security evolution |
+| 25 | LLMs Caught in the Crossfire: Malware Requests and Jailbreak | **INCLUDE** | Tests models from 350M to 8B |
+
+**Category B Result: 15 INCLUDED, 0 EXCLUDED**
+
+---
+
+#### Category C: Backdoor & Data Poisoning Papers (26-32)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 26 | A Survey on Backdoor Threats in LLMs | **INCLUDE** | Comprehensive survey applicable to SLMs |
+| 27 | A Survey of Backdoor Attacks and Defenses on LLMs | **INCLUDE** | Survey covering attack techniques |
+| 28 | Poisoning Attacks on LLMs Require Near-constant Number of Poison Samples | **INCLUDE** | Shows attack scales regardless of model size |
+| 29 | Composite Backdoor Attacks Against LLMs | **INCLUDE** | Tests LLaMA-7B; 100% ASR achieved |
+| 30 | Medical LLMs are vulnerable to data-poisoning attacks | **INCLUDE** | Nature Medicine; high-impact venue |
+| 31 | Revisiting Backdoor Attacks on LLMs: Stealthy and Practical | **INCLUDE** | Practical attack framework |
+| 32 | Data Stealing Attacks against LLMs via Backdooring | **INCLUDE** | Backdoor-based extraction attacks |
+
+**Category C Result: 7 INCLUDED, 0 EXCLUDED**
+
+---
+
+#### Category D: Adversarial Attacks & Robustness Papers (33-43)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 33 | Adversarial Evasion Attack Efficiency against LLMs | **INCLUDE** | Tests BERT, DistilBERT, ALBERT, XLNet |
+| 34 | Contextual Breach: Assessing Robustness of Transformer-based QA | **INCLUDE** | Tests DistilBERT, DeBERTa robustness |
+| 35 | PhishLang: Phishing Detection Using MobileBERT | **INCLUDE** | Uses MobileBERT; tests adversarial robustness |
+| 36 | Explainable Transformer-Based Email Phishing with Adversarial Robustness | **INCLUDE** | Uses DistilBERT with FGM adversarial training |
+| 37 | A Survey of Adversarial Defences and Robustness in NLP | **INCLUDE** | Survey mentions DistilBERT for efficient defense |
+| 38 | Bergeron: Combating Adversarial Attacks | **INCLUDE** | Uses DistilBERT for safety checking |
+| 39 | Universal Adversarial Triggers for Attacking and Analyzing NLP | **EXCLUDE** | Published 2019; outside date range (2020-2025) |
+| 40 | Is BERT Really Robust? A Strong Baseline for Natural Language Attack | **EXCLUDE** | Published 2019; outside date range (2020-2025) |
+| 41 | Adv-BERT: BERT is not robust on misspellings! | **INCLUDE** | Published 2020; within date range |
+| 42 | DARD: Dice Adversarial Robustness Distillation | **INCLUDE** | Distillation for adversarial robustness |
+| 43 | Analysing Safety Risks in LLMs Fine-Tuned with Cyber Security Data | **INCLUDE** | Tests Phi 3 Mini 3.8B, Mistral 7B, Llama 3 8B |
+
+**Category D Result: 9 INCLUDED, 2 EXCLUDED**
+
+---
+
+#### Category E: Membership Inference & Privacy Papers (44-50)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 44 | Membership Inference Attacks on Large-Scale Models: A Survey | **INCLUDE** | First comprehensive MIA survey for LMs |
+| 45 | Membership Inference Attacks via Neighbourhood Comparison | **INCLUDE** | 2023 ACL; applicable to SLMs |
+| 46 | Membership Inference Attack Susceptibility of Clinical Language Models | **INCLUDE** | Tests BERT, GPT-2; shows smaller models leak less |
+| 47 | Membership Inference Attacks against Large Vision-Language Models | **INCLUDE** | Applicable to multimodal SLMs |
+| 48 | Semantic Membership Inference Attack against LLMs | **INCLUDE** | Tests BERT, GPT-2, GPT-3 |
+| 49 | Membership Inference Attacks Against In-Context Learning | **INCLUDE** | CCS 2024; studies ICL privacy |
+| 50 | Exposing Privacy Gaps: MIA on Preference Data for LLM Alignment | **INCLUDE** | Preference data vulnerabilities |
+
+**Category E Result: 7 INCLUDED, 0 EXCLUDED**
+
+---
+
+#### Category F: Model Extraction & Stealing Papers (51-55)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 51 | A Survey on Model Extraction Attacks and Defenses for LLMs | **INCLUDE** | Comprehensive survey; KDD 2025 |
+| 52 | Stealing Part of a Production Language Model | **INCLUDE** | ICML 2024 Best Paper; seminal work |
+| 53 | KGDist: Prompt-Based Distillation Attack against KG-augmented LMs | **INCLUDE** | Distillation attack methodology |
+| 54 | Efficient and Effective Model Extraction | **INCLUDE** | Extraction attack techniques |
+| 55 | Pleak: Prompt leaking attacks against LLM applications | **INCLUDE** | CCS 2024; prompt extraction |
+
+**Category F Result: 5 INCLUDED, 0 EXCLUDED**
+
+---
+
+#### Category G: Survey Papers (56-62)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 56 | When LLMs Meet Cybersecurity: A Systematic Literature Review | **INCLUDE** | Springer; 300+ works analyzed |
+| 57 | LLMs in Cybersecurity: Survey of Vulnerabilities and Defense | **INCLUDE** | MDPI; 223 studies analyzed |
+| 58 | LLMs for Cyber Security: A Systematic Literature Review | **INCLUDE** | arXiv; 185 papers from top venues |
+| 59 | Vulnerability Detection in LLMs: Addressing Security Concerns | **INCLUDE** | MDPI; vulnerability focus |
+| 60 | Security Concerns for LLMs: A Survey | **INCLUDE** | ScienceDirect; covers sleeper agents, deception |
+| 61 | A Survey on Collaborating Small and Large Language Models | **INCLUDE** | Directly discusses SLM-LLM collaboration |
+| 62 | Exploring the Role of LLMs in Cybersecurity: Systematic Survey | **INCLUDE** | Mentions SLM for defense (KL divergence) |
+
+**Category G Result: 7 INCLUDED, 0 EXCLUDED**
+
+---
+
+#### Category H: Edge Deployment & Specific Model Papers (63-68)
+
+| # | Title | Decision | Rationale |
+|---|-------|----------|-----------|
+| 63 | Deploying AI on Edge: Advancement and Challenges | **INCLUDE** | Discusses edge security vulnerabilities |
+| 64 | Intelligent data analysis in edge computing with LLMs | **INCLUDE** | Edge LLM privacy/security challenges |
+| 65 | Empowering LLMs to edge intelligence: A survey | **INCLUDE** | Edge deployment security considerations |
+| 66 | LLMs and IoT: A Comprehensive Survey | **INCLUDE** | IoT/edge security vulnerabilities |
+| 67 | Edge-LLMs: Edge-Device Large Language Model Competition | **INCLUDE** | Edge deployment challenges |
+| 68 | On the Surprising Efficacy of LLMs for Penetration-Testing | **EXCLUDE** | Focus is on USING LLMs for pentesting, not vulnerabilities IN SLMs |
+
+**Category H Result: 5 INCLUDED, 1 EXCLUDED**
+
+---
+
+### Papers Excluded at Screening (Final List)
+
+| # | Title | Year | Reason for Exclusion |
+|---|-------|------|---------------------|
+| 39 | Universal Adversarial Triggers for Attacking and Analyzing NLP | 2019 | Outside date range (pre-2020) |
+| 40 | Is BERT Really Robust? A Strong Baseline for Natural Language Attack | 2019 | Outside date range (pre-2020) |
+| 68 | On the Surprising Efficacy of LLMs for Penetration-Testing | 2025 | Out of scope: focuses on using LLMs for security tasks, not vulnerabilities in SLMs |
+
+Note: Paper #16 (arXiv:2601.10543) has year "2026" which appears to be a typo in the arXiv ID. Will verify during full-text review.
+
+---
+
+### Screening Statistics Summary
+
+| Category | Screened | Included | Excluded |
+|----------|----------|----------|----------|
+| A. SLM-Specific | 10 | 10 | 0 |
+| B. Jailbreak/Prompt Injection | 15 | 15 | 0 |
+| C. Backdoor/Poisoning | 7 | 7 | 0 |
+| D. Adversarial/Robustness | 11 | 9 | 2 |
+| E. Membership Inference | 7 | 7 | 0 |
+| F. Model Extraction | 5 | 5 | 0 |
+| G. Surveys | 7 | 7 | 0 |
+| H. Edge Deployment | 6 | 5 | 1 |
+| **TOTAL** | **68** | **65** | **3** |
+
+---
+
+### Papers Proceeding to Full-Text Review: 65
+
+Next step: Full-text eligibility assessment to confirm:
+1. Full text is accessible
+2. Paper specifically addresses or is applicable to SLMs (<10B parameters)
+3. Contains empirical results or systematic analysis on vulnerabilities
+4. Meets quality standards for inclusion in systematic review
