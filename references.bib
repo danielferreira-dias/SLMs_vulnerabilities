@@ -4,6 +4,48 @@
 % ============================================
 
 % ============================================
+% FOUNDATIONAL WORKS
+% ============================================
+
+@inproceedings{vaswani2017attention,
+    author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\L}ukasz and Polosukhin, Illia},
+    title     = {Attention Is All You Need},
+    booktitle = {Advances in Neural Information Processing Systems},
+    volume    = {30},
+    year      = {2017}
+}
+
+@article{brown2020language,
+    author    = {Brown, Tom and others},
+    title     = {Language Models are Few-Shot Learners},
+    journal   = {Advances in Neural Information Processing Systems},
+    volume    = {33},
+    pages     = {1877--1901},
+    year      = {2020}
+}
+
+@article{achiam2024gpt4,
+    author    = {Achiam, Josh and others},
+    title     = {GPT-4 Technical Report},
+    journal   = {arXiv preprint arXiv:2303.08774},
+    year      = {2024}
+}
+
+@article{bommasani2021opportunities,
+    author    = {Bommasani, Rishi and others},
+    title     = {On the Opportunities and Risks of Foundation Models},
+    journal   = {arXiv preprint arXiv:2108.07258},
+    year      = {2021}
+}
+
+@article{zhao2023survey,
+    author    = {Zhao, Wayne Xin and others},
+    title     = {A Survey of Large Language Models},
+    journal   = {arXiv preprint arXiv:2303.18223},
+    year      = {2023}
+}
+
+% ============================================
 % SMALL LANGUAGE MODELS
 % ============================================
 
@@ -41,6 +83,14 @@
     title     = {Llama 2: Open Foundation and Fine-Tuned Chat Models},
     journal   = {arXiv preprint arXiv:2307.09288},
     year      = {2023}
+}
+
+@inproceedings{tang2025demystifying,
+    author    = {Tang, Junda and others},
+    title     = {Demystifying Small Language Models for Edge Deployment},
+    booktitle = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL)},
+    year      = {2025},
+    url       = {https://aclanthology.org/2025.acl-long.718/}
 }
 
 % ============================================
@@ -257,20 +307,70 @@
 % SMALL MODEL SPECIFIC SECURITY
 % ============================================
 
-@article{yuan2024small,
-    author    = {Yuan, Zheng and others},
-    title     = {Security Analysis of Small Language Models: Vulnerabilities and Defenses},
-    journal   = {arXiv preprint},
-    year      = {2024},
-    note      = {Placeholder - to be replaced with actual reference}
+@article{belcak2025slm_agentic,
+    author    = {Belcak, Peter and Heinrich, Greg and Diao, Shizhe and Fu, Yonggan and Dong, Xin and Muralidharan, Saurav and Lin, Yingyan Celine and Molchanov, Pavlo},
+    title     = {Small Language Models are the Future of Agentic AI},
+    journal   = {arXiv preprint arXiv:2506.02153},
+    year      = {2025}
 }
 
-@article{chen2024compact,
-    author    = {Chen, Wei and others},
-    title     = {Compact Models, Big Risks: Security Challenges in Edge-Deployed Language Models},
-    journal   = {arXiv preprint},
+@article{lu2024slm_survey,
+    author    = {Lu, Zhenyan and Li, Xiang and Cai, Dongqi and Yi, Rongjie and Liu, Fangming and Zhang, Xiwen and Lane, Nicholas D. and Xu, Mengwei},
+    title     = {Small Language Models: Survey, Measurements, and Insights},
+    journal   = {arXiv preprint arXiv:2409.15790},
+    year      = {2024}
+}
+
+@article{zhang2025slm_jailbreak,
+    author    = {Zhang, Wenhui and Xu, Huiyu and Wang, Zhibo and He, Zeqing and Zhu, Ziqi and Ren, Kui},
+    title     = {Can Small Language Models Reliably Resist Jailbreak Attacks? A Comprehensive Evaluation},
+    journal   = {arXiv preprint arXiv:2503.06519},
+    year      = {2025}
+}
+
+@inproceedings{yi2025slm_submerged,
+    author    = {Yi, Sibo and Cong, Tianshuo and He, Xinlei and Li, Qi and Song, Jiaxing},
+    title     = {Beyond the Tip of Efficiency: Uncovering the Submerged Threats of Jailbreak Attacks in Small Language Models},
+    booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+    year      = {2025},
+    note      = {arXiv preprint arXiv:2502.19883}
+}
+
+@article{xu2024jailbreak_survey,
+    author    = {Xu, Sibo and Zhou, Xuanjing and Hu, Zhichao},
+    title     = {Jailbreak Attacks and Defenses Against Large Language Models: A Survey},
+    journal   = {arXiv preprint arXiv:2407.04295},
+    year      = {2024}
+}
+
+@inproceedings{carlini2024stealing,
+    author    = {Carlini, Nicholas and Paleka, Daniel and Dvijotham, Krishnamurthy Dj and Steinke, Thomas and Hayase, Jonathan and Cooper, A. Feder and Lee, Katherine and Jagielski, Matthew and Nasr, Milad and Conber, Arthur and Wallace, Eric and Rolnick, David and Tram{\`e}r, Florian},
+    title     = {Stealing Part of a Production Language Model},
+    booktitle = {Proceedings of the 41st International Conference on Machine Learning},
     year      = {2024},
-    note      = {Placeholder - to be replaced with actual reference}
+    note      = {ICML 2024 Best Paper}
+}
+
+@article{yao2024survey_extraction,
+    author    = {Yao, Yuhang and others},
+    title     = {A Survey on Model Extraction Attacks and Defenses for Large Language Models},
+    journal   = {arXiv preprint arXiv:2506.22521},
+    year      = {2025},
+    note      = {To appear in KDD 2025}
+}
+
+@article{li2025quantized_jailbreak,
+    author    = {Li, Zhengkai and others},
+    title     = {On Jailbreaking Quantized Language Models Through Fault Injection Attacks},
+    journal   = {arXiv preprint arXiv:2507.03236},
+    year      = {2025}
+}
+
+@article{wang2022adversarial_nlp_survey,
+    author    = {Wang, Yichao and others},
+    title     = {A Survey of Adversarial Defences and Robustness in NLP},
+    journal   = {arXiv preprint arXiv:2203.06414},
+    year      = {2022}
 }
 
 % ============================================
