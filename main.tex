@@ -259,80 +259,68 @@ Data extraction was performed using a standardized form capturing: study metadat
 
 Figure~\ref{fig:prisma} illustrates the study selection process following PRISMA 2020 guidelines. The initial database search yielded 72 records distributed across arXiv (n=26), Semantic Scholar (n=43), and ACL Anthology (n=3), with 3 additional records identified through gray literature sources (NVIDIA Research, Microsoft Security, Anthropic), totaling 75 records. After removing 7 duplicates identified through DOI and title matching, 68 unique records underwent title and abstract screening. Of these, 3 were excluded: 2 for publication date outside the specified range (pre-2020), and 1 for out-of-scope focus on using LLMs for security testing rather than vulnerabilities in SLMs. The remaining 65 studies proceeded to full-text eligibility assessment and were included in the final synthesis.
 
-\begin{figure*}[htbp]
+\begin{figure}[htbp]
 \centering
+\resizebox{\columnwidth}{!}{%
 \begin{tikzpicture}[
     % Node styles
-    box/.style={rectangle, draw=black, thick, minimum width=2.8cm, minimum height=1.2cm, text centered, text width=2.6cm, font=\footnotesize},
-    smallbox/.style={rectangle, draw=black, thick, minimum width=2.2cm, minimum height=1cm, text centered, text width=2cm, font=\scriptsize},
-    wideboxaliased/.style={rectangle, draw=black, thick, minimum width=4cm, minimum height=1cm, text centered, text width=3.8cm, font=\footnotesize},
-    exclusionbox/.style={rectangle, draw=black, thick, minimum width=3.5cm, minimum height=1.4cm, text centered, text width=3.3cm, font=\scriptsize, align=left},
-    stagetext/.style={font=\footnotesize\bfseries, rotate=90, anchor=south},
-    arrow/.style={-{Stealth[length=2.5mm]}, thick}
+    mainbox/.style={rectangle, draw=black, minimum width=2.5cm, minimum height=0.8cm, text centered, text width=2.3cm, font=\scriptsize},
+    widebox/.style={rectangle, draw=black, minimum width=3.2cm, minimum height=0.7cm, text centered, text width=3cm, font=\scriptsize},
+    excludebox/.style={rectangle, draw=black, minimum width=2.5cm, minimum height=0.9cm, text centered, text width=2.3cm, font=\scriptsize},
+    stagelab/.style={font=\scriptsize\bfseries, rotate=90, anchor=center},
+    myarrow/.style={->, >=stealth, thick}
 ]
 
 % Stage labels (left side)
-\node[stagetext] at (-5.5, 0.5) {Identification};
-\node[stagetext] at (-5.5, -2.5) {Screening};
-\node[stagetext] at (-5.5, -5.5) {Eligibility};
-\node[stagetext] at (-5.5, -8) {Inclusion};
+\node[stagelab] at (-4.2, 0.8) {Identification};
+\node[stagelab] at (-4.2, -1.2) {Screening};
+\node[stagelab] at (-4.2, -3.2) {Eligibility};
+\node[stagelab] at (-4.2, -5) {Inclusion};
 
 % Dashed lines separating stages
-\draw[dashed, gray] (-5, -1.2) -- (5.5, -1.2);
-\draw[dashed, gray] (-5, -4) -- (5.5, -4);
-\draw[dashed, gray] (-5, -6.8) -- (5.5, -6.8);
+\draw[dashed, gray] (-3.8, -0.1) -- (4.2, -0.1);
+\draw[dashed, gray] (-3.8, -2.3) -- (4.2, -2.3);
+\draw[dashed, gray] (-3.8, -4.1) -- (4.2, -4.1);
 
-% IDENTIFICATION STAGE
-% Database boxes
-\node[smallbox] (arxiv) at (-3, 1) {Literature search\\arXiv\\(n = 26)};
-\node[smallbox] (semantic) at (0, 1) {Literature search\\Semantic Scholar\\(n = 43)};
-\node[smallbox] (acl) at (3, 1) {Literature search\\ACL Anthology\\(n = 3)};
+% === IDENTIFICATION ===
+\node[mainbox] (db1) at (-2.5, 1.5) {Literature search\\arXiv\\(n = 26)};
+\node[mainbox] (db2) at (0, 1.5) {Literature search\\Semantic Scholar\\(n = 43)};
+\node[mainbox] (db3) at (2.5, 1.5) {Literature search\\ACL Anthology\\(n = 3)};
 
-% Other sources
-\node[smallbox] (other) at (5, 1) {Other sources\\(gray lit.)\\(n = 3)};
+\node[mainbox] (other) at (4, 0.5) {Other sources\\(n = 3)};
 
-% Records identified
-\node[wideboxaliased] (identified) at (0, -0.5) {Records identified from search\\(n = 75)};
+\node[widebox] (total) at (0, 0.4) {Records identified from search (n = 75)};
 
-% Arrows from databases to identified
-\draw[arrow] (arxiv.south) -- ++(0,-0.3) -| ($(identified.north) + (-1,0)$);
-\draw[arrow] (semantic.south) -- ($(identified.north)$);
-\draw[arrow] (acl.south) -- ++(0,-0.3) -| ($(identified.north) + (1,0)$);
-\draw[arrow] (other.south) -- ++(0,-0.5) -| ($(identified.north) + (1.5,0)$);
+% Arrows to total - simple vertical lines
+\draw[myarrow] (db1.south) -- (db1.south |- total.north);
+\draw[myarrow] (db2.south) -- (total.north);
+\draw[myarrow] (db3.south) -- (db3.south |- total.north);
+\draw[myarrow] (other.west) -- (total.east);
 
-% SCREENING STAGE
-% Duplicates removed
-\node[wideboxaliased] (duplicates) at (0, -2) {Records after duplicates removed\\(n = 68)};
+% === SCREENING ===
+\node[widebox] (dedup) at (0, -0.8) {Records after duplicates removed (n = 68)};
+\node[excludebox] (exc1) at (3.2, -1.6) {Excluded in title/\\abstract screening\\(n = 3)};
 
-% Excluded at screening
-\node[exclusionbox] (excluded1) at (4.5, -3) {Records excluded in\\title and abstract\\screening\\Excluded: (n = 3)};
+\draw[myarrow] (total.south) -- (dedup.north);
+\draw[myarrow] (dedup.south) -- ++(0,-0.35) -| (exc1.north);
 
-% Arrows
-\draw[arrow] (identified.south) -- (duplicates.north);
-\draw[arrow] (duplicates.south) -- ++(0, -0.5) -- ++(2.5, 0) -- (excluded1.west);
+% === ELIGIBILITY ===
+\node[widebox] (fulltext) at (0, -2.9) {Full-text articles assessed (n = 65)};
+\node[excludebox] (exc2) at (3.2, -3.4) {Application of\\IC1--IC5, EC1--EC6\\Excluded: (n = 0)};
 
-% ELIGIBILITY STAGE
-% Full-text assessed
-\node[wideboxaliased] (fulltext) at (0, -5) {Full-text articles assessed\\for eligibility\\(n = 65)};
+\draw[myarrow] (dedup.south) -- ++(0,-0.35) -- (fulltext.north);
+\draw[myarrow] (fulltext.east) -- (exc2.west);
 
-% Excluded at full-text
-\node[exclusionbox] (excluded2) at (4.5, -5.5) {Application of IC1--IC5,\\EC1--EC6\\Excluded: (n = 0)};
+% === INCLUSION ===
+\node[widebox] (final) at (0, -4.7) {Studies included in review (n = 65)};
 
-% Arrows
-\draw[arrow] (duplicates.south) -- ++(0,-0.3) -- (fulltext.north);
-\draw[arrow] (fulltext.east) -- (excluded2.west);
+\draw[myarrow] (fulltext.south) -- (final.north);
 
-% INCLUSION STAGE
-% Final included
-\node[wideboxaliased, minimum height=1.2cm] (included) at (0, -7.8) {Eligible studies\\(n = 65)};
-
-% Arrow
-\draw[arrow] (fulltext.south) -- (included.north);
-
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \caption{PRISMA 2020 flow diagram showing study selection process.}
 \label{fig:prisma}
-\end{figure*}
+\end{figure}
 
 % ============================================
 % IV. RESULTS
