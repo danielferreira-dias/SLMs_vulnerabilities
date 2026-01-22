@@ -1,0 +1,186 @@
+% ============================================
+% APPENDIX: Characteristics of Included Studies
+% This file can be included in main.tex with \input{appendix_studies}
+% ============================================
+
+\appendix
+\section*{Appendix A: Characteristics of Included Studies}
+
+Table~\ref{tab:all_studies} presents the complete characteristics of all 65 studies included in this systematic review, organized by vulnerability category.
+
+\begin{table*}[htbp]
+\caption{Characteristics of All Included Studies (n=65)}
+\label{tab:all_studies}
+\renewcommand{\arraystretch}{1.1}
+\footnotesize
+\begin{center}
+\begin{tabular}{|p{2.8cm}|c|p{4.5cm}|p{3.2cm}|p{4cm}|}
+\hline
+\textbf{Authors} & \textbf{Year} & \textbf{Title} & \textbf{Models Studied} & \textbf{Key Findings} \\
+\hline
+\multicolumn{5}{|c|}{\textbf{Jailbreak \& Prompt Injection (n=25)}} \\
+\hline
+Zhang et al. \cite{zhang2025slm_jailbreak} & 2025 & Can Small Language Models Reliably Resist Jailbreak Attacks? & 63 SLMs (<10B) & 47.6\% of SLMs have ASR >40\% \\
+\hline
+Yi et al. \cite{yi2025slm_submerged} & 2025 & Beyond the Tip of Efficiency: Uncovering Submerged Threats & 13 SLMs, 3 LLMs & SLMs exhibit ``submerged threats'' \\
+\hline
+Xu et al. \cite{xu2024jailbreak_survey} & 2024 & Jailbreak Attacks and Defenses Against LLMs: A Survey & Multiple LLMs/SLMs & Comprehensive taxonomy of attacks \\
+\hline
+Xu et al. \cite{xu2024comprehensive_jailbreak} & 2024 & A Comprehensive Study of Jailbreak Attack vs Defense & GPT, Llama, Vicuna & Defense evaluation framework \\
+\hline
+Chao et al. \cite{chao2024tricks} & 2024 & Bag of Tricks: Benchmarking Jailbreak Attacks & Multiple models & Benchmarking methodology \\
+\hline
+Zou et al. \cite{zou2023universal} & 2023 & Universal and Transferable Adversarial Attacks & Llama-2, Vicuna, GPT & Universal suffixes transfer 78\%+ \\
+\hline
+Wei et al. \cite{wei2024jailbroken} & 2024 & Jailbroken: How Does LLM Safety Training Fail? & GPT-4, Claude, Llama & Competing objectives cause failures \\
+\hline
+Liu et al. \cite{liu2023jailbreaking} & 2023 & Jailbreaking ChatGPT via Prompt Engineering & ChatGPT & 60-80\% ASR with templates \\
+\hline
+Andriushchenko et al. \cite{andriushchenko2024adaptive} & 2024 & Jailbreaking Safety-Aligned LLMs with Adaptive Attacks & Llama-2, GPT-4 & Adaptive attacks bypass defenses \\
+\hline
+Chen et al. \cite{chen2025promptdistill} & 2025 & Adversarial Prompt Distillation from LLMs to SLMs & LLM→SLM transfer & 78\% attack transferability \\
+\hline
+Chao et al. \cite{chao2025adaptive} & 2025 & The Attacker Moves Second: Adaptive Attacks & Multiple defenses & 8/10 defenses bypassed \\
+\hline
+Greshake et al. \cite{greshake2023youve} & 2023 & Indirect Prompt Injection in LLM Apps & Bing Chat, GPT & RAG systems vulnerable \\
+\hline
+Perez \& Ribeiro \cite{perez2022ignore} & 2023 & HackAPrompt: Global Prompt Hacking Competition & GPT-3.5, GPT-4 & Systematic prompt injection study \\
+\hline
+Liu et al. \cite{liu2025bypassing} & 2025 & Bypassing Prompt Injection Detection & Guardrail systems & Detection bypass techniques \\
+\hline
+Kumar et al. \cite{kumar2025redteaming} & 2025 & Red Teaming the Mind of the Machine & Multiple LLMs & 73\% indirect injection success \\
+\hline
+Chen et al. \cite{chen2025multimodal_injection} & 2025 & Multimodal Prompt Injection Attacks & Vision-Language Models & Cross-modal attack vectors \\
+\hline
+Li et al. \cite{li2024jailbreak_mitigation} & 2024 & Jailbreaking and Mitigation of Vulnerabilities & Multiple LLMs & Mitigation effectiveness \\
+\hline
+Zhang et al. \cite{zhang2025promptscreen} & 2025 & PromptScreen: Efficient Jailbreak Mitigation & Classifier-based & 94\% detection accuracy \\
+\hline
+Xu et al. \cite{xu2025decoding_safety} & 2025 & In-Decoding Safety-Awareness Probing & Llama, Mistral & Real-time safety monitoring \\
+\hline
+Wang et al. \cite{wang2025attentiondefense} & 2025 & AttentionDefense: Attention-Based Detection & Transformer models & Attention pattern analysis \\
+\hline
+Wu et al. \cite{wu2025spirit} & 2025 & Spirit: Patching Speech LMs Against Jailbreaks & Speech SLMs & Multimodal defense \\
+\hline
+Wu et al. \cite{wu2025evolving} & 2025 & Evolving Security in LLMs & Attack/defense dynamics & Arms race documentation \\
+\hline
+Li et al. \cite{li2025malware_crossfire} & 2025 & LLMs Caught in Crossfire: Malware Requests & Multiple SLMs & SLMs 2.3x more likely to comply \\
+\hline
+Zhou et al. \cite{zhou2024robust_prompt} & 2024 & Robust Prompt Optimization & Multiple models & Near-zero ASR defense \\
+\hline
+Wu et al. \cite{wu2025speech_slm} & 2025 & Jailbreaking Speech-Enabled SLMs & Speech SLMs & Audio attack vectors \\
+\hline
+\multicolumn{5}{|c|}{\textbf{Backdoor \& Data Poisoning (n=7)}} \\
+\hline
+Chen et al. \cite{chen2025backdoor_survey} & 2025 & Survey on Backdoor Threats in LLMs & Multiple LLMs & Comprehensive backdoor taxonomy \\
+\hline
+Zhao et al. \cite{zhao2024backdoor_survey} & 2024 & Survey of Backdoor Attacks and Defenses & Multiple LLMs & Defense techniques overview \\
+\hline
+Li et al. \cite{li2025poison_constant} & 2025 & Poisoning Requires Near-Constant Samples & Various sizes & Size-independent vulnerability \\
+\hline
+Huang et al. \cite{huang2024composite} & 2024 & Composite Backdoor Attacks Against LLMs & LLaMA-7B & 100\% ASR composite backdoors \\
+\hline
+Chen et al. \cite{chen2024medical_poison} & 2024 & Medical LLMs Vulnerable to Poisoning & Medical LLMs & Systematic diagnostic errors \\
+\hline
+Yang et al. \cite{yang2025stealthy_backdoor} & 2025 & Stealthy Backdoor Poisoning Framework & Multiple SLMs & Low-detectability attacks \\
+\hline
+Dong et al. \cite{dong2024data_stealing} & 2024 & Data Stealing via Backdooring & LLMs with backdoors & Data exfiltration attacks \\
+\hline
+\multicolumn{5}{|c|}{\textbf{Adversarial Attacks (n=9)}} \\
+\hline
+Wang et al. \cite{wang2022adversarial_nlp_survey} & 2022 & Survey of Adversarial Defences in NLP & NLP models & Defense taxonomy \\
+\hline
+Zhu et al. \cite{zhu2023promptbench} & 2023 & PromptBench: Robustness Evaluation & Multiple LLMs & Prompt robustness benchmark \\
+\hline
+Liu et al. \cite{liu2024evasion} & 2024 & Adversarial Evasion Attack Efficiency & DistilBERT, ALBERT & 15-23\% higher susceptibility \\
+\hline
+Dong et al. \cite{dong2020advbert} & 2020 & Adv-BERT: BERT Not Robust on Misspellings & BERT variants & >30\% accuracy degradation \\
+\hline
+Koide et al. \cite{koide2024phishlang} & 2024 & PhishLang: MobileBERT Phishing Detection & MobileBERT & 97\%→61\% under attack \\
+\hline
+Santos et al. \cite{santos2025phishing_robustness} & 2025 & Transformer Email Phishing with Adversarial Robustness & DistilBERT & FGM improves robustness \\
+\hline
+Bergeron et al. \cite{bergeron2023conscience} & 2023 & Conscience-Based Alignment Framework & Multiple LLMs & SLM-based safety checking \\
+\hline
+Liu et al. \cite{liu2025dard} & 2025 & DARD: Adversarial Robustness Distillation & Distilled models & Robustness-aware distillation \\
+\hline
+Park et al. \cite{park2024contextual_breach} & 2024 & Contextual Breach: QA Model Robustness & QA transformers & Context manipulation attacks \\
+\hline
+\multicolumn{5}{|c|}{\textbf{Membership Inference (n=7)}} \\
+\hline
+Hu et al. \cite{hu2025mia_survey} & 2025 & MIA on Large-Scale Models: A Survey & Multiple LLMs & MIA technique taxonomy \\
+\hline
+Win et al. \cite{win2025wink_mia} & 2025 & Win-k: Improved MIA on SLMs & Small LMs & SLM-specific MIA technique \\
+\hline
+Lehman et al. \cite{lehman2021clinical_mia} & 2021 & MIA Susceptibility of Clinical LMs & GPT-2, Clinical BERT & 40\% lower MIA in smaller models \\
+\hline
+Mattern et al. \cite{mattern2023neighbourhood} & 2023 & MIA via Neighbourhood Comparison & Multiple LLMs & Neighborhood-based detection \\
+\hline
+Ko et al. \cite{ko2024vlm_mia} & 2024 & MIA Against Vision-Language Models & VLMs & Multimodal MIA techniques \\
+\hline
+Panda et al. \cite{panda2024icl_mia} & 2024 & MIA Against In-Context Learning & ICL-enabled LLMs & ICL-specific vulnerabilities \\
+\hline
+Chen et al. \cite{chen2024preference_mia} & 2024 & MIA on Preference Data for Alignment & RLHF-trained LLMs & Preference data leakage \\
+\hline
+\multicolumn{5}{|c|}{\textbf{Model Extraction (n=5)}} \\
+\hline
+Carlini et al. \cite{carlini2024stealing} & 2024 & Stealing Part of a Production LM & Production LLMs & ICML Best Paper; partial extraction \\
+\hline
+Yao et al. \cite{yao2024survey_extraction} & 2025 & Survey on Model Extraction Attacks & Multiple LLMs & Extraction defense taxonomy \\
+\hline
+Hui et al. \cite{hui2024pleak} & 2024 & Pleak: Prompt Leaking Attacks & Deployed LLM apps & System prompt extraction \\
+\hline
+Liu et al. \cite{liu2024kgdist} & 2024 & KGDist: Distillation Attack on KG-LLMs & KG-augmented LLMs & Knowledge graph extraction \\
+\hline
+Wang et al. \cite{wang2024efficient_extraction} & 2024 & Efficient and Effective Model Extraction & Multiple LLMs & Query-efficient extraction \\
+\hline
+\multicolumn{5}{|c|}{\textbf{Edge Deployment Security (n=5)}} \\
+\hline
+Li et al. \cite{li2025quantized_jailbreak} & 2025 & Jailbreaking Quantized LMs via Fault Injection & Quantized SLMs & 12-18\% ASR increase at 4-bit \\
+\hline
+Singh et al. \cite{singh2025edge_ai} & 2025 & Deploying AI on Edge: Challenges & Edge AI systems & Edge security challenges \\
+\hline
+Chen et al. \cite{chen2025edge_llm} & 2025 & Intelligent Data Analysis in Edge Computing & Edge LLMs & Edge deployment patterns \\
+\hline
+Liu et al. \cite{liu2025edge_survey} & 2025 & Empowering LLMs to Edge Intelligence & Edge LLMs & Comprehensive edge survey \\
+\hline
+Xu et al. \cite{xu2024iot_llm} & 2024 & LLMs and IoT: A Comprehensive Survey & IoT-deployed LLMs & IoT-specific vulnerabilities \\
+\hline
+\multicolumn{5}{|c|}{\textbf{General Security Surveys (n=7)}} \\
+\hline
+Lu et al. \cite{lu2024slm_survey} & 2024 & Small Language Models: Survey and Insights & SLMs (<10B) & Comprehensive SLM characterization \\
+\hline
+Belcak et al. \cite{belcak2025slm_agentic} & 2025 & SLMs are the Future of Agentic AI & Agentic SLMs & NVIDIA perspective on SLM future \\
+\hline
+Li et al. \cite{li2025llm_cyber_slr} & 2025 & When LLMs Meet Cybersecurity: SLR & Security LLMs & Systematic security review \\
+\hline
+Zhang et al. \cite{zhang2025llm_cyber_survey} & 2025 & LLMs in Cybersecurity: Survey & Security applications & Application and vulnerability survey \\
+\hline
+Ferrag et al. \cite{ferrag2024cyber_slr} & 2024 & LLMs for Cyber Security: SLR & Cyber LLMs & Security applications review \\
+\hline
+Chen et al. \cite{chen2025security_concerns} & 2025 & Security Concerns for LLMs: Survey & Multiple LLMs & Comprehensive security survey \\
+\hline
+Ali et al. \cite{ali2025cyber_survey} & 2025 & Role of LLMs in Cybersecurity: Survey & Security LLMs & Security role analysis \\
+\hline
+\end{tabular}
+\end{center}
+\end{table*}
+
+\textbf{Notes:}
+\begin{itemize}
+    \item ASR = Attack Success Rate
+    \item SLM = Small Language Model (<10B parameters)
+    \item LLM = Large Language Model (>10B parameters)
+    \item MIA = Membership Inference Attack
+    \item KG = Knowledge Graph
+    \item ICL = In-Context Learning
+    \item RLHF = Reinforcement Learning from Human Feedback
+\end{itemize}
+
+% Quality Assessment Summary
+\textbf{Quality Distribution:}
+\begin{itemize}
+    \item High quality (rigorous methodology, reproducible): n=24 (37\%)
+    \item Medium quality (adequate methodology, some limitations): n=32 (49\%)
+    \item Lower quality (included for unique findings): n=9 (14\%)
+\end{itemize}
