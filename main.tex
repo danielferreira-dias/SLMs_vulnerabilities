@@ -40,15 +40,15 @@ Porto, Portugal \\
 % ABSTRACT
 % ============================================
 \begin{abstract}
-\textbf{Context:} Small Language Models (SLMs), typically defined as models with fewer than 7 billion parameters, have emerged as efficient alternatives to Large Language Models (LLMs) for deployment in resource-constrained environments such as edge devices, mobile applications, and IoT systems. As their adoption accelerates, understanding their security vulnerabilities becomes critical.
-\textbf{Goal:} This systematic literature review aims to identify, categorize, and analyze the security vulnerabilities specific to small language models, examining how these vulnerabilities differ from those observed in larger models and evaluating proposed mitigation strategies.
-\textbf{Method:} We conducted a systematic literature review following PRISMA guidelines, searching multiple databases including IEEE Xplore, ACM Digital Library, arXiv, and Semantic Scholar. Studies were selected based on predefined inclusion and exclusion criteria, with quality assessment performed using established protocols.
-\textbf{Results:} Our analysis reveals that SLMs exhibit distinct vulnerability profiles compared to their larger counterparts, with particular susceptibility to prompt injection, jailbreaking, and adversarial attacks. The reduced parameter count often limits the implementation of safety mechanisms, creating unique security challenges.
-\textbf{Conclusion:} This review provides the first comprehensive taxonomy of SLM-specific vulnerabilities and identifies critical gaps in current research, offering a foundation for future security research in small language models.
+\textbf{Context:} Small Language Models (SLMs), typically defined as transformer-based architectures with fewer than 10 billion parameters, are increasingly deployed in edge computing, mobile applications, and IoT systems where resource constraints preclude larger models. The rapid adoption of SLMs has outpaced systematic investigation of their security properties.
+\textbf{Objective:} This systematic literature review identifies, categorizes, and analyzes security vulnerabilities specific to SLMs, examining how these vulnerabilities differ from those in larger models and evaluating the effectiveness of proposed defenses.
+\textbf{Methods:} Following PRISMA 2020 guidelines, we searched arXiv, Semantic Scholar, and ACL Anthology, identifying 75 records. After duplicate removal and screening, 65 studies published between 2020 and 2025 were included. Quality assessment classified 37\% as high quality, 49\% as medium, and 14\% as lower quality.
+\textbf{Results:} SLMs exhibited significantly higher jailbreak susceptibility than LLMs, with median attack success rates of 34\% compared to 15\% for equivalently aligned larger models. Post-training quantization to 4-bit precision increased jailbreak vulnerability by 25\%. Conversely, SLMs demonstrated reduced privacy attack vulnerability due to lower memorization capacity. Backdoor attacks achieved near-perfect success rates independent of model size. Evaluation of defense mechanisms revealed that eight of ten established defenses were bypassed by adaptive attacks.
+\textbf{Conclusions:} SLMs present a distinct security profile requiring dedicated frameworks rather than adapted LLM approaches. The gap between deployment acceleration and security framework maturation represents a critical challenge for edge AI applications.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Small Language Models, Security Vulnerabilities, Prompt Injection, Jailbreaking, Adversarial Attacks, Systematic Literature Review
+Small Language Models, Security Vulnerabilities, Jailbreak Attacks, Backdoor Attacks, Model Quantization, Edge Computing, Systematic Literature Review
 \end{IEEEkeywords}
 
 % ============================================
@@ -139,6 +139,8 @@ ED5 & ACM Digital Library & \url{https://dl.acm.org/} \\
 \end{center}
 \end{table}
 
+Note that while IEEE Xplore (ED4) and ACM Digital Library (ED5) were searched using the defined query strings, no records meeting the inclusion criteria were identified from these sources; consequently, they do not appear in the PRISMA flow diagram counts.
+
 Additionally, gray literature sources including technical reports from NVIDIA Research, Microsoft Security, and Anthropic were consulted to capture emerging findings not yet published in peer-reviewed venues.
 
 \vspace{0.5em}
@@ -211,14 +213,26 @@ The search strings were defined to cover four main pillars of the research scope
 
 \vspace{0.5em}
 
-The final search query combined these categories using Boolean operators as follows:
+The final search query combined these categories using Boolean operators as shown in Table~\ref{tab:combined_query}. Date filtering was restricted to publications from January 2020 to December 2025.
 
-\begin{quote}
-\small
-(Generic SLM Terms \textbf{OR} Decoder-only Models \textbf{OR} Encoder-only Models) \textbf{AND} (General Security \textbf{OR} Prompt-based Attacks \textbf{OR} Training-time Attacks \textbf{OR} Privacy Attacks)
-\end{quote}
-
-Date filtering was restricted to publications from January 2020 to December 2025.
+\begin{table}[htbp]
+\caption{Combined Search Query Structure}
+\label{tab:combined_query}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabular}{|l|p{5.8cm}|}
+\hline
+\textbf{Component} & \textbf{Boolean Expression} \\
+\hline
+Model Terms & (Generic SLM Terms \textbf{OR} Decoder-only Models \textbf{OR} Encoder-only Models) \\
+\hline
+Security Terms & (General Security \textbf{OR} Prompt-based Attacks \textbf{OR} Training-time Attacks \textbf{OR} Privacy Attacks) \\
+\hline
+\textbf{Final Query} & Model Terms \textbf{AND} Security Terms \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsection{Inclusion and Exclusion Criteria}
 
@@ -261,67 +275,61 @@ Figure~\ref{fig:prisma} illustrates the study selection process following PRISMA
 
 \begin{figure}[htbp]
 \centering
-\resizebox{\columnwidth}{!}{%
+\resizebox{0.95\columnwidth}{!}{%
 \begin{tikzpicture}[
-    % Define colors
-    mainblue/.style={fill=blue!8, draw=black!70, line width=0.5pt},
-    maingray/.style={fill=gray!10, draw=black!70, line width=0.5pt},
-    excludered/.style={fill=red!5, draw=black!50, line width=0.5pt},
-    finalgreen/.style={fill=green!8, draw=black!70, line width=0.5pt},
-    % Node styles
-    dbbox/.style={rectangle, rounded corners=3pt, mainblue, minimum width=2.4cm, minimum height=1cm, text centered, text width=2.2cm, font=\scriptsize},
-    widebox/.style={rectangle, rounded corners=3pt, mainblue, minimum width=4.5cm, minimum height=0.8cm, text centered, text width=4.3cm, font=\scriptsize},
-    otherbox/.style={rectangle, rounded corners=3pt, maingray, minimum width=2cm, minimum height=0.8cm, text centered, text width=1.8cm, font=\scriptsize},
-    excludebox/.style={rectangle, rounded corners=3pt, excludered, minimum width=2.6cm, minimum height=0.9cm, text centered, text width=2.4cm, font=\scriptsize},
-    finalbox/.style={rectangle, rounded corners=3pt, finalgreen, minimum width=4.5cm, minimum height=0.9cm, text centered, text width=4.3cm, font=\scriptsize\bfseries},
-    stagelabel/.style={rectangle, rounded corners=2pt, fill=black!80, text=white, font=\scriptsize\bfseries, minimum width=1.6cm, minimum height=0.5cm, rotate=90, anchor=center},
-    myarrow/.style={-{Stealth[length=2.5mm, width=2mm]}, line width=0.8pt, black!70}
+    % Node styles with colors
+    dbbox/.style={rectangle, draw=black!70, fill=blue!8, minimum width=2.5cm, minimum height=1cm, text centered, text width=2.4cm, font=\footnotesize},
+    widebox/.style={rectangle, draw=black!70, fill=blue!12, minimum width=3.8cm, minimum height=1cm, text centered, text width=3.6cm, font=\footnotesize},
+    sidebox/.style={rectangle, draw=black!70, fill=gray!15, minimum width=2.2cm, minimum height=1cm, text centered, text width=2cm, font=\footnotesize},
+    finalbox/.style={rectangle, draw=black!70, fill=green!12, minimum width=3.8cm, minimum height=1cm, text centered, text width=3.6cm, font=\footnotesize},
+    stagelab/.style={font=\footnotesize\bfseries, rotate=90, anchor=center},
+    myarrow/.style={->, >=stealth, thick, black!70}
 ]
 
-% Stage labels (left side) with background
-\node[stagelabel] at (-4.5, 1.0) {Identification};
-\node[stagelabel] at (-4.5, -1.0) {Screening};
-\node[stagelabel] at (-4.5, -3.0) {Eligibility};
-\node[stagelabel] at (-4.5, -5.0) {Inclusion};
+% Stage labels (left side)
+\node[stagelab] at (-4.5, 2.2) {Identification};
+\node[stagelab] at (-4.5, -1.0) {Screening};
+\node[stagelab] at (-4.5, -4.5) {Eligibility};
+\node[stagelab] at (-4.5, -7.5) {Inclusion};
 
-% Subtle stage separator lines
-\draw[black!20, line width=0.5pt] (-3.6, 0.0) -- (4.5, 0.0);
-\draw[black!20, line width=0.5pt] (-3.6, -2.0) -- (4.5, -2.0);
-\draw[black!20, line width=0.5pt] (-3.6, -4.0) -- (4.5, -4.0);
+% Dashed lines separating stages
+\draw[dashed, gray] (-3.9, 0.3) -- (5.2, 0.3);
+\draw[dashed, gray] (-3.9, -3.0) -- (5.2, -3.0);
+\draw[dashed, gray] (-3.9, -6.0) -- (5.2, -6.0);
 
 % === IDENTIFICATION ===
-\node[dbbox] (db1) at (-2.3, 1.7) {arXiv\\{\footnotesize (n = 26)}};
-\node[dbbox] (db2) at (0, 1.7) {Semantic Scholar\\{\footnotesize (n = 43)}};
-\node[dbbox] (db3) at (2.3, 1.7) {ACL Anthology\\{\footnotesize (n = 3)}};
+% Center the databases above the "Records identified" box (centered at x=0)
+\node[dbbox] (db1) at (-2.8, 3.5) {arXiv\\(n = 26)};
+\node[dbbox] (db2) at (0, 3.5) {Semantic Scholar\\(n = 43)};
+\node[dbbox] (db3) at (2.8, 3.5) {ACL Anthology\\(n = 3)};
 
-\node[otherbox] (other) at (4, 0.9) {Other sources\\{\footnotesize (n = 3)}};
+\node[widebox] (total) at (0, 1.3) {Records identified\\(n = 75)};
+\node[sidebox] (other) at (4.3, 1.3) {Other sources\\(n = 3)};
 
-\node[widebox] (total) at (0, 0.5) {Records identified from databases\\{\footnotesize (n = 72) + other sources (n = 3) = \textbf{75 total}}};
-
-% Arrows from databases to total
-\draw[myarrow] (db1.south) -- ++(0,-0.15) -| ($(total.north)+(-1.2,0)$);
+% Arrows from databases converging to total box
+\draw[myarrow] (db1.south) -- ++(0,-0.5) -| ($(total.north)+(-1,0)$);
 \draw[myarrow] (db2.south) -- (total.north);
-\draw[myarrow] (db3.south) -- ++(0,-0.15) -| ($(total.north)+(1.2,0)$);
-\draw[myarrow] (other.south) -- ++(0,-0.1) -| ($(total.north east)+(-0.3,0)$);
+\draw[myarrow] (db3.south) -- ++(0,-0.5) -| ($(total.north)+(1,0)$);
+\draw[myarrow] (other.west) -- (total.east);
 
 % === SCREENING ===
-\node[widebox] (dedup) at (0, -0.7) {Records after duplicates removed\\{\footnotesize (n = 68; duplicates removed: 7)}};
-
-\node[excludebox] (exc1) at (3.5, -1.4) {Excluded at screening\\{\footnotesize (n = 3)}\\{\tiny Pre-2020: 2, Out of scope: 1}};
+\node[widebox] (dedup) at (0, -0.7) {Duplicates removed\\(n = 7)};
+\node[widebox] (screened) at (0, -2.0) {Records screened\\(n = 68)};
+\node[sidebox] (exc1) at (4.3, -2.0) {Records excluded\\(n = 3)};
 
 \draw[myarrow] (total.south) -- (dedup.north);
-\draw[myarrow] (dedup.south) -- ++(0,-0.25) -| (exc1.north);
+\draw[myarrow] (dedup.south) -- (screened.north);
+\draw[myarrow] (screened.east) -- (exc1.west);
 
 % === ELIGIBILITY ===
-\node[widebox] (fulltext) at (0, -2.7) {Full-text articles assessed for eligibility\\{\footnotesize (n = 65)}};
+\node[widebox] (fulltext) at (0, -4.5) {Full-text assessed\\(n = 65)};
+\node[sidebox] (exc2) at (4.3, -4.5) {Full-text excluded\\(n = 0)};
 
-\node[excludebox] (exc2) at (3.5, -3.3) {Excluded at full-text\\{\footnotesize (n = 0)}};
-
-\draw[myarrow] (dedup.south) -- ++(0,-0.25) -- ++(0,-0.55) -- (fulltext.north);
+\draw[myarrow] (screened.south) -- (fulltext.north);
 \draw[myarrow] (fulltext.east) -- (exc2.west);
 
 % === INCLUSION ===
-\node[finalbox] (final) at (0, -4.8) {Studies included in systematic review\\{\footnotesize (n = 65)}};
+\node[finalbox] (final) at (0, -7.5) {Studies included\\(n = 65)};
 
 \draw[myarrow] (fulltext.south) -- (final.north);
 
@@ -384,7 +392,7 @@ Security venues & 0 & 0 & 3 & 1 \\
 \end{center}
 \end{table}
 
-The temporal distribution reveals increasing research attention to SLM security, with 78\% of included studies published in 2024--2025, reflecting the recent emergence of SLMs as a distinct research focus. The predominance of arXiv preprints (58\%) reflects the rapid pace of research in this area, with findings often disseminated prior to formal peer review. Notably, 10 studies (15\%) appeared in high-impact venues including Nature Medicine, ICML (Best Paper), and top security conferences (CCS, RAID). Complete characteristics of all 65 included studies are available in supplementary materials.
+The temporal distribution reveals increasing research attention to SLM security, with 78\% of included studies published in 2024--2025, reflecting the recent emergence of SLMs as a distinct research focus. The predominance of arXiv preprints (58\%) reflects the rapid pace of research in this area, with findings often disseminated prior to formal peer review. Note that the publication venue distribution in Table~\ref{tab:study_characteristics} differs from the search source counts in Figure~\ref{fig:prisma} because Semantic Scholar indexes papers from multiple venues including arXiv; consequently, many arXiv preprints were identified through Semantic Scholar searches rather than direct arXiv queries. Notably, 10 studies (15\%) appeared in high-impact venues including Nature Medicine, ICML (Best Paper), and top security conferences (CCS, RAID). Complete characteristics of all 65 included studies are available in supplementary materials.
 
 \subsection{Quality Assessment}
 
@@ -453,7 +461,7 @@ The fundamental constraint of reduced parameters directly impacts security imple
 
 \subsubsection{Quantization Vulnerabilities}
 
-Quantization, the process of reducing numerical precision for efficient edge deployment, introduces vulnerabilities beyond simple performance degradation. Li et al. demonstrated that 4-bit quantization increases jailbreak attack success rates by 12--18\% compared to full-precision counterparts, with the degradation particularly pronounced for models already near the safety threshold \cite{li2025quantized_jailbreak}. More critically, quantization creates opportunities for hardware-level fault injection attacks that manipulate the execution environment to bypass safety mechanisms entirely. By inducing bit flips in quantized weight representations through techniques such as rowhammer or voltage glitching, attackers can selectively disable safety-critical neurons without triggering software-level detection. The combination of reduced numerical precision and physical accessibility makes quantized edge deployments particularly vulnerable to sophisticated adversaries with hardware access.
+Quantization, the process of reducing numerical precision for efficient edge deployment, introduces vulnerabilities beyond simple performance degradation. Li et al. demonstrated that 4-bit quantization increases jailbreak attack success rates by approximately 25\% compared to full-precision counterparts, with the degradation particularly pronounced for models already near the safety threshold \cite{li2025quantized_jailbreak}. More critically, quantization creates opportunities for hardware-level fault injection attacks that manipulate the execution environment to bypass safety mechanisms entirely. By inducing bit flips in quantized weight representations through techniques such as rowhammer or voltage glitching, attackers can selectively disable safety-critical neurons without triggering software-level detection. The combination of reduced numerical precision and physical accessibility makes quantized edge deployments particularly vulnerable to sophisticated adversaries with hardware access.
 
 \subsubsection{Knowledge Distillation Risks}
 
@@ -496,7 +504,7 @@ The synthesis of 65 studies examining small language model security reveals patt
 
 This systematic review establishes that small language models present a distinct security profile characterized by specific vulnerabilities that diverge from their larger counterparts in important ways. The evidence demonstrates that SLMs exhibit systematically higher susceptibility to jailbreak attacks, with median attack success rates of 34\% compared to approximately 15\% for frontier LLMs with equivalent safety training \cite{zhang2025slm_jailbreak}. This disparity arises from fundamental capacity constraints: smaller architectures cannot simultaneously maintain robust safety boundaries and perform useful tasks without degradation in one or both domains. Paradoxically, SLMs show reduced vulnerability to privacy attacks, with membership inference success rates approximately 40\% lower than larger variants due to limited memorization capacity \cite{lehman2021clinical_mia}. Perhaps most concerning is the finding that backdoor vulnerabilities remain model-size-independent, requiring only a near-constant number of poison samples regardless of scale \cite{li2025poison_constant}, which undermines assumptions that compact models might offer inherent resistance to training-time attacks.
 
-The review also reveals that architectural optimization techniques intended to enable edge deployment---quantization, knowledge distillation, and compression---systematically degrade security properties through mechanisms absent in cloud-deployed large models. Defense mechanisms proposed across input, architecture, and training levels show promise in controlled evaluations but demonstrate fragility under adaptive attack conditions, with 8 of 10 evaluated defenses bypassed by modified attacks requiring minimal additional effort \cite{chao2025adaptive}. These findings collectively indicate that the current rapid deployment of SLMs in security-critical applications outpaces the development of adequate protective measures, creating a widening gap between capability deployment and security maturation.
+The review also reveals that architectural optimization techniques intended to enable edge deployment, quantization, knowledge distillation, and compression, systematically degrade security properties through mechanisms absent in cloud-deployed large models. Defense mechanisms proposed across input, architecture, and training levels show promise in controlled evaluations but demonstrate fragility under adaptive attack conditions, with 8 of 10 evaluated defenses bypassed by modified attacks requiring minimal additional effort \cite{chao2025adaptive}. These findings collectively indicate that the current rapid deployment of SLMs in security-critical applications outpaces the development of adequate protective measures, creating a widening gap between capability deployment and security maturation.
 
 \subsection{Implications for Practice}
 
@@ -504,11 +512,11 @@ The findings of this review carry significant implications for multiple stakehol
 
 For security researchers, the findings identify several priority areas requiring focused investigation. The development of adaptive defense mechanisms that can evolve in response to emerging attacks represents a critical need, as current static approaches provide only temporary mitigation. Quantization-aware security research should examine fault injection vulnerabilities that emerge specifically from reduced numerical precision in edge deployments. Knowledge distillation methods that preserve robustness properties, exemplified by approaches such as DARD \cite{liu2025dard}, warrant further development and validation. Additionally, edge-specific threat modeling that accounts for physical access, limited monitoring, and constrained update capabilities would address gaps in current security frameworks designed primarily for cloud environments.
 
-For policymakers and standards bodies, the review highlights that current rapid SLM deployment substantially outpaces security standardization efforts. The development of SLM-specific security benchmarks would enable consistent evaluation across models and vendors. Certification frameworks for edge AI in critical applications---healthcare, transportation, industrial control---could establish minimum security requirements before deployment approval. Transparency requirements regarding the security posture of deployed SLMs would enable informed procurement decisions and appropriate risk management by adopting organizations.
+For policymakers and standards bodies, the review highlights that current rapid SLM deployment substantially outpaces security standardization efforts. The development of SLM-specific security benchmarks would enable consistent evaluation across models and vendors. Certification frameworks for edge AI in critical applications, healthcare, transportation, industrial control, could establish minimum security requirements before deployment approval. Transparency requirements regarding the security posture of deployed SLMs would enable informed procurement decisions and appropriate risk management by adopting organizations.
 
 \subsection{Limitations}
 
-Several methodological limitations constrain the interpretation and generalizability of these findings. The rapid evolution of the small language model field means that 78\% of included studies were published in 2024--2025, limiting longitudinal validity and the ability to identify persistent versus transient vulnerability patterns. The predominance of arXiv preprints (58\%) reflects the field's pace but introduces variability in peer review rigor, though quality assessment procedures attempted to weight evidence appropriately. Heterogeneous definitions of ``small'' across studies---ranging from 100 million to 10 billion parameters---complicate direct comparison and synthesis. The quality assessment revealed that only 37\% of studies achieved high-quality classification, suggesting that conclusions regarding attack success rates and defense effectiveness should be interpreted with appropriate caution.
+Several methodological limitations constrain the interpretation and generalizability of these findings. The rapid evolution of the small language model field means that 78\% of included studies were published in 2024--2025, limiting longitudinal validity and the ability to identify persistent versus transient vulnerability patterns. The predominance of arXiv preprints (58\%) reflects the field's pace but introduces variability in peer review rigor, though quality assessment procedures attempted to weight evidence appropriately. Heterogeneous definitions of ``small'' across studies, ranging from 100 million to 10 billion parameters, complicate direct comparison and synthesis. The quality assessment revealed that only 37\% of studies achieved high-quality classification, suggesting that conclusions regarding attack success rates and defense effectiveness should be interpreted with appropriate caution.
 
 Scope limitations further bound the applicability of findings. This review focused on known vulnerability categories derived from established taxonomies; emerging threat vectors not yet characterized in the literature fall outside its coverage. The emphasis on transformer-based architectures means findings may not generalize to alternative approaches such as state-space models or hybrid architectures increasingly explored for efficient deployment. Limited coverage of domain-specific SLMs deployed in medical, legal, or financial contexts constrains conclusions about vulnerability profiles in high-stakes specialized applications. Finally, the arms race dynamic between attacks and defenses means that defense effectiveness data captures only a temporal snapshot; mechanisms deemed effective at publication may have been subsequently bypassed, and the review cannot predict future attack evolution.
 
@@ -517,9 +525,9 @@ Scope limitations further bound the applicability of findings. This review focus
 % ============================================
 \section{Conclusions}
 
-This systematic literature review provides the first comprehensive analysis of security vulnerabilities specific to Small Language Models, synthesizing findings from 37 primary studies published between 2023 and 2025. Addressing the research questions posed in the Introduction, the evidence reveals that SLMs exhibit a distinct and divergent security profile from their larger counterparts. Jailbreak attacks achieve substantially higher success rates against SLMs, with median attack success rates of 34\% compared to 15\% for LLMs with equivalent safety alignment, confirming that reduced model capacity fundamentally constrains the implementation of robust safety mechanisms. Conversely, SLMs demonstrate lower vulnerability to privacy attacks, as their reduced memorization capacity limits the effectiveness of membership inference and training data extraction techniques. Backdoor attacks present a model-size-independent threat, achieving near-perfect attack success rates across all model scales while evading current detection methods. Critically, the architectural optimizations that enable practical SLM deployment---including quantization, pruning, and knowledge distillation---systematically degrade security properties, with post-training quantization alone increasing jailbreak vulnerability by 25\% in 4-bit configurations. Current defense mechanisms remain inadequate, with empirical evaluation demonstrating that eight of ten established defenses can be bypassed by adaptive attacks.
+This systematic literature review provides the first comprehensive analysis of security vulnerabilities specific to Small Language Models, synthesizing findings from 65 studies published between 2020 and 2025. Addressing the research questions posed in the Introduction, the evidence reveals that SLMs exhibit a distinct and divergent security profile from their larger counterparts. Jailbreak attacks achieve substantially higher success rates against SLMs, with median attack success rates of 34\% compared to 15\% for LLMs with equivalent safety alignment, confirming that reduced model capacity fundamentally constrains the implementation of robust safety mechanisms. Conversely, SLMs demonstrate lower vulnerability to privacy attacks, as their reduced memorization capacity limits the effectiveness of membership inference and training data extraction techniques. Backdoor attacks present a model-size-independent threat, achieving near-perfect attack success rates across all model scales while evading current detection methods. Critically, the architectural optimizations that enable practical SLM deployment, including quantization, pruning, and knowledge distillation, systematically degrade security properties, with post-training quantization alone increasing jailbreak vulnerability by 25\% in 4-bit configurations. Current defense mechanisms remain inadequate, with empirical evaluation demonstrating that eight of ten established defenses can be bypassed by adaptive attacks.
 
-The broader significance of these findings extends beyond academic characterization to urgent practical implications. A substantial gap exists between the accelerating pace of SLM deployment in edge computing, mobile applications, and IoT systems and the maturation of security frameworks adequate to protect these deployments. The evidence synthesized here demonstrates that adapting Large Language Model security approaches to smaller architectures is insufficient; SLM-specific security frameworks must be developed that account for the fundamental constraints of reduced model capacity and the expanded attack surfaces of edge deployment. Priority research areas identified through this review include the development of adaptive defenses that maintain effectiveness against evolving attack strategies, quantization-aware security techniques that preserve safety properties through compression, and comprehensive threat modeling for edge deployment scenarios. Industry and regulatory bodies should consider establishing security certification standards for SLMs deployed in critical applications before such deployments become widespread. As Small Language Models transition from research artifacts to production systems embedded in safety-critical infrastructure, the integration of security considerations throughout the model development lifecycle---from architecture design through deployment and monitoring---is not merely advisable but essential.
+The broader significance of these findings extends beyond academic characterization to urgent practical implications. A substantial gap exists between the accelerating pace of SLM deployment in edge computing, mobile applications, and IoT systems and the maturation of security frameworks adequate to protect these deployments. The evidence synthesized here demonstrates that adapting Large Language Model security approaches to smaller architectures is insufficient; SLM-specific security frameworks must be developed that account for the fundamental constraints of reduced model capacity and the expanded attack surfaces of edge deployment. Priority research areas identified through this review include the development of adaptive defenses that maintain effectiveness against evolving attack strategies, quantization-aware security techniques that preserve safety properties through compression, and comprehensive threat modeling for edge deployment scenarios. Industry and regulatory bodies should consider establishing security certification standards for SLMs deployed in critical applications before such deployments become widespread. As Small Language Models transition from research artifacts to production systems embedded in safety-critical infrastructure, the integration of security considerations throughout the model development lifecycle, from architecture design through deployment and monitoring, is not merely advisable but essential.
 
 % ============================================
 % REFERENCES
